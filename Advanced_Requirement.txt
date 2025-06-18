@@ -1,0 +1,66 @@
+For Reference purpose :
+
+
+Hardware Recommendations
+Microphone Arrays:
+
+ReSpeaker Mic Array (USB or 4-mic)
+
+MATRIX Creator (Raspberry Pi)
+
+OAK-D + microphones (for audio-visual fusion)
+
+Computing Platform:
+
+Raspberry Pi 4 (basic)
+
+Jetson Nano / Xavier NX (ML + real-time)
+
+Desktop or NUC with Ubuntu + ROS
+
+
+Goal:
+Build a basic robot system that:
+Listens for speech.
+Converts it to text.
+Understands the command.
+Executes an action (like moving or replying).
+Gives spoken feedback.
+
+Modular Software Architecture
+Each task is a module that can be independently developed, tested, and integrated.
+
+voice_robot_project/
+├── audio_input/              # Task 1: Microphone input capture
+│   └── mic_stream.py
+├── vad/                      # Task 2: Voice Activity Detection
+│   └── vad.py
+├── asr/                      # Task 3: Speech-to-text
+│   └── whisper_asr.py
+├── nlu/                      # Task 4: Intent recognition
+│   └── command_parser.py
+├── robot_actions/            # Task 5: Command execution
+│   └── actions.py
+├── tts/                      # Task 6: Text-to-speech feedback
+│   └── tts.py
+├── main.py                   # Pipeline runner
+├── requirements.txt
+└── README.md
+
+Updated DL-Based Software Architecture
+voice_robot_dl/
+├── audio_input/              # Mic input
+│   └── mic_stream.py
+├── asr/                      # Whisper (or Wav2Vec2) for speech-to-text
+│   └── whisper_asr.py
+├── nlu/                      # Transformer-based intent classifier
+│   └── intent_classifier.py
+├── robot_control/            # DL-based or rule-based actions
+│   └── controller.py
+├── tts/                      # Speech synthesis using TTS model
+│   └── bark_tts.py
+├── main.py                   # Inference pipeline
+├── models/                   # Saved weights
+│   ├── intent_model.pt
+├── requirements.txt
+└── README.md
